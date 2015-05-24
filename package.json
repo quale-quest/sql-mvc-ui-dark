@@ -1,0 +1,22 @@
+{
+  "name": "sql-mvc-ui-dark",
+  "version": "0.0.1",
+  "description": "Separate Dark UI for sql-mvc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quale-quest/sql-mvc-ui-dark.git"
+  },
+  "keywords": [
+    "sql-mvc"
+  ],
+  "author": "Lafras",
+  "license": "Comertial Open Source",
+  "bugs": {
+    "url": "https://github.com/quale-quest/sql-mvc-ui-dark/issues"
+  },
+  "homepage": "https://github.com/quale-quest/sql-mvc-ui-dark"
+}
