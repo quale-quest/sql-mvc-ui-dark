@@ -17,8 +17,7 @@ sql overridemastertable=COALESCE(overridemastertable,'#defaultmastertable#');
 
 into operator select * from user_table_name where user_table_name.user_pk_field=:operator$ref; 
 
-INSERT INTO Z$CONTEXT (PK, TSTAMP, OPERATOR_REF, ID,Linked_from_cid,Linked_from_indx) 
-VALUES (:cid,'now',:operator$ref ,:z$sessionid ,:pki,:pkf);
+INSERT INTO Z$CONTEXT (PK, TSTAMP, OPERATOR_REF, ID,Linked_from_cid,Linked_from_indx) VALUES (:cid,'now',:operator$ref ,:z$sessionid ,:pki,:pkf);
 
 if (field$name = '') then 
   sql overridemastertable=' from '||:overridemastertable||'';
@@ -77,7 +76,63 @@ begin
 end; 
 
 #>
+
+
+
+
+
+
+
+<#dialect(mssql12) #>
+
+<#script ()
+
+
+declare overridemastertable varchar(100);
+declare linkby varchar(100);
+declare field$name varchar(41);
+declare operator$ref varchar(41);
+declare PK_FIELD_NAME varchar(42);
+
+sql set @overridemastertable=null;
+select top 1 @field$name=field_name,@overridemastertable=valu,@linkby=query,@PK_FIELD_NAME=PK_FIELD_NAME from Z$PK_CACHE where master=@pki and indx=@pkf;
+
+select top 1 @operator$ref=operator_ref from Z$CONTEXT where pk = @pki;
+execute overridemastertable;
+sql set @overridemastertable=COALESCE(@overridemastertable,'#defaultmastertable#');
+
+into operator select * from user_table_name where user_table_name.user_pk_field=@operator$ref; 
+
+INSERT INTO Z$CONTEXT (PK, TSTAMP, OPERATOR_REF, ID,Linked_from_cid,Linked_from_indx) VALUES (@cid,'now',@operator$ref ,@z$sessionid ,@pki,@pkf);
+
+if (@field$name = '') then  
+  sql set @overridemastertable=concat(' from ',@overridemastertable,'');
+else
+	begin  
+		if (@field$name='click') then
+			   sql set @overridemastertable=concat(' from ',@overridemastertable,' where ',@linkby);			   
+		else
+			begin
+				sql set @overridemastertable=concat(' from ',@overridemastertable,' where ',@PK_FIELD_NAME,' = ''',REPLACE(@linkby,'''',''''''),'''')  ;
+			end
+
+	end
+
+into master select * ::-overridemastertable limit 1;	
+
+
+
+#>
+
 <#dialect() #>	
 
+
 <#inject_point #>
+
+
+
 <div cid={{cid}}> <!-- start of divine page -->
+
+
+
+
