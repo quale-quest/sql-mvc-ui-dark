@@ -10,14 +10,13 @@ declare PK_FIELD_NAME varchar(41);
 
 
 sql overridemastertable=null;
-select field_name,valu,query,PK_FIELD_NAME from Z$PK_CACHE where master=:pki and indx=:pkf into :field$name,:overridemastertable,:linkby,:PK_FIELD_NAME;
-select operator_ref from Z$CONTEXT where pk = :pki into :operator$ref;
+select first 1 field_name,valu,query,PK_FIELD_NAME from Z$PK_CACHE where master=:pki and indx=:pkf into :field$name,:overridemastertable,:linkby,:PK_FIELD_NAME;
+select first 1 operator_ref from Z$CONTEXT where pk = :pki into :operator$ref;
 execute overridemastertable;
 sql overridemastertable=COALESCE(overridemastertable,'#defaultmastertable#');
 
 into operator select * from user_table_name where user_table_name.user_pk_field=:operator$ref; 
 
-INSERT INTO Z$CONTEXT (PK, TSTAMP, OPERATOR_REF, ID,Linked_from_cid,Linked_from_indx) VALUES (:cid,'now',:operator$ref ,:z$sessionid ,:pki,:pkf);
 
 if (field$name = '') then 
   sql overridemastertable=' from '||:overridemastertable||'';
@@ -53,8 +52,6 @@ execute overridemastertable;
 sql set overridemastertable=COALESCE(overridemastertable,'#defaultmastertable#');
 
 into operator select * from user_table_name where user_table_name.user_pk_field=operator$ref; 
-
-INSERT INTO Z$CONTEXT (PK, TSTAMP, OPERATOR_REF, ID,Linked_from_cid,Linked_from_indx) VALUES (cid,'now',operator$ref ,z$sessionid ,pki,pkf);
 
 if (field$name = '') then 
   sql set overridemastertable=concat(' from ',overridemastertable,'');
@@ -102,8 +99,6 @@ execute overridemastertable;
 sql set @overridemastertable=COALESCE(@overridemastertable,'#defaultmastertable#');
 
 into operator select * from user_table_name where user_table_name.user_pk_field=@operator$ref; 
-
-INSERT INTO Z$CONTEXT (PK, TSTAMP, OPERATOR_REF, ID,Linked_from_cid,Linked_from_indx) VALUES (@cid,'now',@operator$ref ,@z$sessionid ,@pki,@pkf);
 
 if (@field$name = '') then  
   sql set @overridemastertable=concat(' from ',@overridemastertable,'');

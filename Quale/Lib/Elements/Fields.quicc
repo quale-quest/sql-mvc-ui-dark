@@ -56,7 +56,7 @@ element(IconLinkFieldLink_Script)
 
 
 element(Edit_Main)
-    <div class= "fieldwrap"><input id='{{id}}' type="text" 
+    <div class= "fieldwrap"><input id='edit-[[0]]-{{QryOffset}}' type="text" 
     {{#field.f.title}}title="{{field.f.title}}"{{/field.f.title}}
     {{#field.f.placeholder}}placeholder="{{field.f.placeholder}}"{{/field.f.placeholder}} 
     {{#field.f.autosave}}data-autosave="{{field.f.autosave}}"{{/field.f.autosave}} 
