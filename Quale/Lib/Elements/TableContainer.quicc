@@ -4,7 +4,7 @@ element(DataTopTitle)
     <p><b>{{name}}</b></p>
 
 element(DataWrap)
-    <div > <form autocomplete="off"><table class="qq-table" id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></form></div>
+    <div > <form autocomplete="off"><table class="full" id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></form></div>
 
 element(DataHead)
     $CRLF$<thead>{{{pop}}}</thead>
@@ -138,7 +138,7 @@ element(UploadData_Inherit)
     
 
 element(UploadDataWrap)
-    <div > <table class="qq-table" id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></div>
+    <div > <table class="full" id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></div>
 
 element(UploadDataTopTitle)
     
@@ -153,7 +153,7 @@ element(UploadFormData_Inherit)
     Form
 
 element(UploadFormDataWrap)
-    <div > <table class="qq-table" id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></div>
+    <div > <table class="full" id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></div>
 
 element(UploadFormDataTopTitle)
     
@@ -162,5 +162,38 @@ element(UploadFormDataHeadRecordWrap)
     
 
 element(UploadFormDataFootRecordWrap)
+  
+
+
+
+
+element(NontableData_Inherit)
     
+
+element(NontableDataWrap)
+    {{{body_html}}}
+
+element(NontableDataTopTitle)
+    
+
+element(NontableDataHeadRecordWrap)
+    
+
+element(NontableDataFootRecordWrap)
+    
+
+element(NontableFormData_Inherit)
+    Form
+
+element(NontableFormDataWrap)
+    {{{body_html}}}
+
+element(NontableFormDataTopTitle)
+    
+
+element(NontableFormDataHeadRecordWrap)
+    
+
+element(NontableFormDataFootRecordWrap)
+  
 #>

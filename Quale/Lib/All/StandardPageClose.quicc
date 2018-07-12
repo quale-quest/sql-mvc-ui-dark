@@ -2,5 +2,5 @@
 <#script()
 rem For production this file must be copied over into templates\All\StandardPageClose.htm;
 #>
-<!-- end of divine page --></div> 
+</div><!-- end of divine page --> 
 

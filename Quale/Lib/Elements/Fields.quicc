@@ -54,16 +54,32 @@ element(IconLinkFieldLink_Div)
 element(IconLinkFieldLink_Script)
     inherit:View_Script
 
-
 element(Edit_Main)
-    <div class= "fieldwrap"><input id='edit-[[0]]-{{QryOffset}}' type="text" 
+    <div class= "fieldwrap"><input id='edit-[[0]]-{{QryOffset}}' 
+	{{^field.f.min}}
+	  {{^field.f.max}}type="text"{{/field.f.max}}
+	  {{#field.f.max}}type="number" max={{field.f.max}}{{/field.f.max}}
+	{{/field.f.min}}	
+
+	{{#field.f.min}}
+	  type="number" min={{field.f.min}}
+	  {{#field.f.max}}max={{field.f.max}} {{/field.f.max}}
+	{{/field.f.min}}
+
     {{#field.f.title}}title="{{field.f.title}}"{{/field.f.title}}
     {{#field.f.placeholder}}placeholder="{{field.f.placeholder}}"{{/field.f.placeholder}} 
     {{#field.f.autosave}}data-autosave="{{field.f.autosave}}"{{/field.f.autosave}} 
-    {{#field.f.size}}size="{{field.f.size}}"{{/field.f.size}} 
+    {{#field.f.size}}size="{{field.f.size}}"{{/field.f.size}} 	
     {{#field.f.maxlength}}maxlength="{{field.f.maxlength}}"{{/field.f.maxlength}} 
+
+	{{#field.f.pattern}}pattern="{{field.f.pattern}}"{{/field.f.pattern}} 
+	{{#field.f.pattern2}}data-pattern2="{{field.f.pattern2}}"{{/field.f.pattern2}} 
+	
     onchange="zxd(event,[[0]],{{QryOffset}});" 
-    value="[[{{pop}}]]" \></div>
+	onfocus="zxf(event);" 
+    value="[[{{pop}}]]" \>
+	<div class="validationhidden">Must be a valid email address.</div>
+	</div>
 
 element(Edit_Div)
     {{{pop}}}
@@ -73,16 +89,32 @@ element(Edit_Script)
 
 
 element(HideFieldView_Head)
-    
+   inherit:View_Head  
 
-element(HideFieldView_Main)
-    
+rem element(HideFieldView_Main)
+rem    <div class= "fieldwrap">[[{{pop}}]]</div>
 
+   
+element(HiddenFieldView_Main)
+   <div class= "fieldwrap hidden" >[[{{pop}}]]</div> 
+   
 element(HideFieldView_Div)
-    
+   inherit:View_Div 
 
 element(HideFieldView_Script)
-    
+   inherit:View_Script 
+
+element(FieldHide_Head)
+   inherit:View_Head 
+
+element(FieldHide_Main)
+    Hidingx[[{{pop}}]] 
+
+element(FieldHide_Div)
+   inherit:View_Div 
+
+element(FieldHide_Script)
+	inherit:View_Script
 
 element(TextFieldView_Head)
     inherit:View_Head
@@ -104,6 +136,9 @@ element(TextFieldEdit_Div)
 
 element(TextFieldEdit_Script)
     inherit:Edit_Script
+	
+	
+	
 
 element(BoxTextFieldView_Main)
     <textarea readonly type="text"
@@ -120,11 +155,13 @@ element(BoxTextFieldView_Script)
 element(BoxTextFieldEdit_Main)
     <textarea  type="text"
      onchange="zxd(event,[[0]],{{QryOffset}});" 
+	 onfocus="zxf(this);" 
      {{#field.f.size}}maxlength="{{field.f.size}}"{{/field.f.size}}
      {{#field.f.width}}cols="{{field.f.width}}"{{/field.f.width}}
      {{#field.f.y}}rows="{{field.f.y}}"{{/field.f.y}}{{^field.f.y}}rows="{{field.f.y}}"{{/field.f.y}}
     {{#field.f.placeholder}}placeholder="{{field.f.placeholder}}"{{/field.f.placeholder}} 
     {{#field.f.autosave}}data-autosave="{{field.f.autosave}}"{{/field.f.autosave}} 
+	{{#field.f.pattern}}pattern="{{field.f.pattern}}"{{/field.f.pattern}} 
     >[[[{{pop}}]]]</textarea>
 
 element(BoxTextFieldEdit_Div)
@@ -150,7 +187,9 @@ element(LookupFieldView_Script)
 
 element(LookupFieldEdit_Main)
     <div class= "fieldwrap">
-    <select id='{{id}}' onchange="zxd(event,[[0]],{{QryOffset}});"  
+    <select id='{{id}}' 
+	onchange="zxd(event,[[0]],{{QryOffset}});"  
+	onfocus="zxf(this);" 
     onkeydown="return FillList(event,'{{field.f.List}}') " onmouseover= "return FillList(event,'{{field.f.List}}')" 
     {{#field.f.placeholder}}placeholder="{{field.f.placeholder}}"{{/field.f.placeholder}} 
     {{#field.f.autosave}}data-autosave="{{field.f.autosave}}"{{/field.f.autosave}} 
@@ -202,6 +241,7 @@ element(PickFieldView_Head)
 element(DatepickerTextFieldEdit_Main)
     <input class= "datepicker"  title="{{widget.title}}" 
      onchange="zxd(event,[[0]],{{QryOffset}});" 
+	 onfocus="zxf(this);" 
     {{#field.f.autosave}}data-autosave="{{field.f.autosave}}"{{/field.f.autosave}} 
     type="text" 
     value="[[[codec_date({{pop}})]]]" />
@@ -209,6 +249,7 @@ element(DatepickerTextFieldEdit_Main)
 element(DatetimepickerTextFieldEdit_Main)
     <input class= "datetimepicker"  title="{{widget.title}}" 
      onchange="zxd(event,[[0]],{{QryOffset}});" 
+	 onfocus="zxf(this);" 
     {{#field.f.autosave}}data-autosave="{{field.f.autosave}}"{{/field.f.autosave}} 
     type="text" 
     value="[[[codec_stamp({{pop}})]]]" />
@@ -241,7 +282,8 @@ element(SliderTextFieldEdit_Main)
     data-orientation="{{field.f.orientation}}" 
     >
     <input type= "text" 
-    onchange="zxd(event,[[0]],{{QryOffset}});" 
+    onchange="zxd(event,[[0]],{{QryOffset}});"
+	onfocus="zxf(this);" 
     {{#field.f.autosave}}data-autosave="{{field.f.autosave}}"{{/field.f.autosave}} 
     class= "SlideValueDisplay " 
     value= "[[[{{pop}}]]]" 

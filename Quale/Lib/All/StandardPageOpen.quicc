@@ -126,7 +126,7 @@ into master select * ::-overridemastertable limit 1;
 
 
 
-<div cid={{cid}}> <!-- start of divine page -->
+<!-- start of divine page --><div cid={{cid}}> 
 
 
 
