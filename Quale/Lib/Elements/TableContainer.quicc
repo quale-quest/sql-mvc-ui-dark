@@ -53,7 +53,9 @@ element(DataFootFirstFieldCell)
 
 element(DataFootFieldCell)
     <td>{{{pop}}}</td>
+#>
 
+<#
 element(FormDataWrap)
     <form autocomplete="off"><table id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></form>
 
@@ -107,7 +109,9 @@ element(FormDataFootFirstFieldCell)
 
 element(FormDataFootFieldCell)
     
+#>
 
+<#
 element(DTData_Inherit)
     
 
@@ -121,7 +125,9 @@ element(DTDataWrap)
 	{{#table.pagination}} data-page-length='{{table.pagination}}' {{/table.pagination}}
 	{{#param.pagination}} data-page-length='{{param.pagination}}' {{/param.pagination}}
 	id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></form></div>
+#>
 
+<#
 element(TodoData_Inherit)
     
 
@@ -133,7 +139,9 @@ element(TodoDataHeadRecordWrap)
 
 element(TodoDataFootRecordWrap)
     
+#>
 
+<#
 element(UploadData_Inherit)
     
 
@@ -165,7 +173,9 @@ element(UploadFormDataFootRecordWrap)
   
 
 
+#>
 
+<#
 
 element(NontableData_Inherit)
     
@@ -197,3 +207,62 @@ element(NontableFormDataHeadRecordWrap)
 element(NontableFormDataFootRecordWrap)
   
 #>
+
+
+
+<#
+element(MultiformDataWrap)
+    <form autocomplete="off" style="margin:4px 8px 4px 8px;"> {{{head_html}}} {{{body_html}}} {{{foot_html}}}</form>
+
+element(MultiformDataTopTitle)
+    <p><b>{{#proper}}{{table.name}}{{/proper}}</b></p>
+
+element(MultiformDataHeadRecordWrap)
+    
+
+element(MultiformDataFootRecordWrap)
+    
+
+element(MultiformDataHead)
+    
+
+element(MultiformDataHeadRow)
+   
+
+element(MultiformDataHeadFirstFieldCell)
+    
+
+element(MultiformDataHeadFieldCell)
+    
+
+element(MultiformDataBodyArray)
+    [[#{{{tid}}}]]{{{pop}}}[[/{{{tid}}}]]
+
+element(MultiformDataBody)
+    $CRLF${{{pop}}}
+
+element(MultiformDataBodyRow)
+    <table  style="border: 1px solid black;margin:4px 8px 4px 4px;padding:4px;" id="{{tid}}"> {{{pop}}} </table>
+
+element(MultiformDataBodyRecordWrap)
+    {{{pop}}}
+
+element(MultiformDataBodyFirstFieldCell)
+    <tr><td>{{#proper}}{{field.f.title}}{{/proper}}</td><td>{{{pop}}}</td></tr>
+
+element(MultiformDataBodyFieldCell)
+    <tr><td>{{#proper}}{{field.f.title}}{{/proper}}</td><td>{{{pop}}}</td></tr>
+
+element(MultiformDataFoot)
+    
+
+element(MultiformDataFootRow)
+    
+
+element(MultiformDataFootFirstFieldCell)
+    
+
+element(MultiformDataFootFieldCell)
+    
+#>
+
