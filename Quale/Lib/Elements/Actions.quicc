@@ -58,7 +58,7 @@ element(FootActionDiv)
     <div id="footer-wrap"><div id="footer"><div class="footer-container"><div class="footer-nav"><ul>
 
 element(FootActionEndDiv)
-    </ul></div><div class="copyright">&copy; 2015 QualeQuest.com - All rights reserved</div></div><div id="goTop"><a href="#" class="tip-top" title="Go Top">Top</a></div></div></div>
+    </ul></div><div class="copyright"><%branding.copyright_title%></div></div><div id="goTop"><a href="#" class="tip-top" title="Go Top">Top</a></div></div></div>
 
 element(FootActionMain)
     <li {{{li_class}}}><a href="#" language=javascript onclick="{{{url}}}" {{{LinkElements}}} >{{{LeftSpan}}} {{{Title}}} {{{RightSpan}}}</a></li>
