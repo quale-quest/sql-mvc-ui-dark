@@ -1,0 +1,80 @@
+
+
+
+start_element_block(PopupLayoutOpen)
+<!--Popup start-->
+end_element_block()
+
+start_element_block(PopupLayoutClose)
+<span class="icon-wrap-lb"><a href="#" language="javascript" onclick="zxmodalclose()" title="Done"><span class="icon-block-black help-b "></span>Done</a></span>
+<!--end Popup-->
+end_element_block()
+
+
+
+start_element_block(DivoutLayoutOpen)
+<!--Divout start-->
+end_element_block()
+
+start_element_block(DivoutLayoutClose)
+<span class="icon-wrap-lb"><a href="#" language="javascript" onclick="zxmodalclose()" title="Done"><span class="icon-block-black help-b "></span>Done</a></span>
+<!--end Divout-->
+end_element_block()
+
+
+start_element_block(MainLayoutOpen)
+
+<html><head></head>
+<body>	
+
+<#xinclude file=Menu/SlideBar
+xifnotexists="select user_display_field from user_table_name where user_table_name.user_pk_field=user_pk_field and  user_keys_field containing 'SWB'"
+#>	
+
+<!-- div id=wrapper... --><div  id="wrapper"> <!--this should hold all content excluding footer -->
+<#include(file=~/Layout/ProfileMenu)#>
+<#include(file=~/Layout/Notify)#>
+<div id="basicmodaldialog" "> <h3>Loading...</h3></div>
+<#xinclude file=Menu/SwitchBar
+xifnotexists="select user_display_field from user_table_name where user_table_name.user_pk_field=operator.user_pk_field and  user_keys_field containing 'SWB'"
+#>	
+
+
+<!-- div id=container... --><div id="container">
+
+<#
+Menu (name:"Start",style:"LBMenu")
+
+Menu (icon="nav-icon dboard-icon" from=user_table_name where="user_pk_field=Operator.user_pk_field" form=Dashboard/Dashboard title="Dashboard") 
+
+MenuScan (menuname:"MainMenu")
+
+rem Menu{form=Dashboard/Dashboard xform:"Help/Main",title:"About" fromx=user_table_name wherex="user_pk_field=Operator.user_pk_field"}
+
+
+MenuEnd 
+
+#>
+
+<!--end  Menu1-->
+
+<!--end  Menu2-->
+
+<!-- div id=content... --><div id="content">
+<div style="margin-left:4px;margin-right:4px;" class="container_12">
+
+end_element_block()
+
+
+
+start_element_block(MainLayoutClose)
+
+</div><!-- ...div id=content -->
+
+</div><!-- ...div id=container -->
+
+</div><!-- ...div id=wrapper -->
+end_element_block()
+
+
+
