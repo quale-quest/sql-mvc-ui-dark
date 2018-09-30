@@ -5,13 +5,11 @@
 declare overridemastertable varchar(100);
 declare linkby varchar(100);
 declare field$name varchar(41);
-declare operator$ref varchar(41);
 declare PK_FIELD_NAME varchar(41);
 
 
 sql overridemastertable=null;
 select first 1 field_name,valu,query,PK_FIELD_NAME from Z$PK_CACHE where master=:pki and indx=:pkf into :field$name,:overridemastertable,:linkby,:PK_FIELD_NAME;
-select first 1 operator_ref from Z$CONTEXT where pk = :pki into :operator$ref;
 execute overridemastertable;
 sql overridemastertable=COALESCE(overridemastertable,'#defaultmastertable#');
 
@@ -42,7 +40,7 @@ script ()
 declare overridemastertable varchar(100);
 declare linkby varchar(100);
 declare field$name varchar(41);
-declare operator$ref varchar(41);
+declare operator$ref varchar(41);  !!!!! must now be passed as a parameter
 declare PK_FIELD_NAME varchar(42);
 
 sql set overridemastertable=null;
@@ -88,7 +86,7 @@ end;
 declare overridemastertable varchar(100);
 declare linkby varchar(100);
 declare field$name varchar(41);
-declare operator$ref varchar(41);
+declare operator$ref varchar(41); !!!!! must now be passed as a parameter
 declare PK_FIELD_NAME varchar(42);
 
 sql set @overridemastertable=null;
