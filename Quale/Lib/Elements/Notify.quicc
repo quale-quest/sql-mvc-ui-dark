@@ -25,6 +25,9 @@ element(StickyNotifyDiv)
 
 element(HeadingNotifyDiv)
     <h1>{{{Text}}}</h1>
+	
+element(BigBold1NotifyDiv)
+   <span class="BigBold1">{{{Text}}}</span>
 
 element(PrintNotifyDiv)
     {{{Text}}}

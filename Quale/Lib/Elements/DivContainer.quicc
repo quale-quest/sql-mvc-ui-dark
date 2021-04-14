@@ -78,3 +78,34 @@ end_element_block()
 
 
 
+start_element_block(LoginLayoutOpen)
+<!--LoginLayoutOpen-->
+	<div id="login-wrapper">
+		<div id="login-header" class="top-round">
+			<div class="login-left">
+				<span class="icon-wrap-lb-less"><span class="icon-block-black key-tw-b"></span><%branding.menu_short_title%></span>
+			</div>
+			<div class="login-right">
+				<a href="#" title="<%branding.menu_short_title%>"><img src="<%branding.menu_image%>" width="55" height="55" alt="<%branding.menu_short_title%>"></a>
+			</div>
+		</div>
+		<div class="login-box bottom-round">	
+			<div class="centerdiv">
+end_element_block()
+
+start_element_block(LoginLayoutClose)
+			</div>
+		</div>
+	</div>
+	<div id="footer-wrap">
+		<div id="footer">
+			<div class="login-footer-container">
+				 <%branding.copyright_title%>
+			</div>
+		</div>
+	</div>
+
+<!--end Popup-->
+end_element_block()
+
+

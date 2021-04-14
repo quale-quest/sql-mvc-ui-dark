@@ -138,9 +138,11 @@ element(TextFieldEdit_Div)
 element(TextFieldEdit_Script)
     inherit:Edit_Script
 	
+element(Num82TextFieldView_Main)
+    [[[codec_num82({{pop}})]]]
 	
 	
-
+	
 element(BoxTextFieldView_Main)
     <textarea readonly type="text"
      {{#field.f.width}}cols="{{field.f.width}}"{{/field.f.width}}
@@ -238,7 +240,7 @@ element(PickPluginCode)
     some way of making this code and the code in app.js  and in templates/widgets pluggable
 
 element(PickFieldView_Head)
-    inherit:View_Head
+    inherit:View_Head	
 
 element(DatepickerTextFieldEdit_Main)
     <input class= "datepicker"  
@@ -250,15 +252,12 @@ element(DatepickerTextFieldEdit_Main)
     type="text" 
     value="[[[codec_date({{pop}})]]]" />
 
-element(DatetimepickerTextFieldEdit_Main)
-    <input class= "datetimepicker"  
-	 id='edit-[[0]]-{{QryOffset}}' 
-	 title="{{widget.title}}" 
-     onchange="zxd(event,[[0]],{{QryOffset}});" 
-	 onfocus="zxf(this);" 
-    {{#field.f.autosave}}data-autosave="{{field.f.autosave}}"{{/field.f.autosave}} 
-    type="text" 
-    value="[[[codec_stamp({{pop}})]]]" />
+element(DatepickerTextFieldView_Main)
+    [[[codec_date({{pop}})]]]
+
+
+element(DatepickerLinkFieldLink_Main)
+<a href="#" language=javascript onclick="return(zxnav(event,[[0]],{{QryOffset}}));" {{{LinkElements}}} >{{{LeftSpan}}} [[[codec_date({{pop}})]]] {{{RightSpan}}} </a>
 
 element(DatepickerTextFieldView_Head)
     inherit:View_Head
@@ -269,6 +268,16 @@ element(DatepickerTextFieldEdit_Div)
 element(DatepickerTextFieldEdit_Script)
     inherit:Edit_Script
 
+element(DatetimepickerTextFieldEdit_Main)
+    <input class= "datetimepicker"  
+	 id='edit-[[0]]-{{QryOffset}}' 
+	 title="{{widget.title}}" 
+     onchange="zxd(event,[[0]],{{QryOffset}});" 
+	 onfocus="zxf(this);" 
+    {{#field.f.autosave}}data-autosave="{{field.f.autosave}}"{{/field.f.autosave}} 
+    type="text" 
+    value="[[[codec_stamp({{pop}})]]]" />		
+	
 element(DatetimepickerTextFieldView_Head)
     inherit:View_Head
 

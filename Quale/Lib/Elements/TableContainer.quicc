@@ -4,7 +4,7 @@ element(DataTopTitle)
     <p><b>{{name}}</b></p>
 
 element(DataWrap)
-    <div > <form autocomplete="off"><table class="full" id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></form></div>
+    <div > <form autocomplete="off" class="DataWrap"><table class="full" id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></form></div>
 
 element(DataHead)
     $CRLF$<thead>{{{pop}}}</thead>
@@ -57,7 +57,7 @@ element(DataFootFieldCell)
 
 <#
 element(FormDataWrap)
-    <form autocomplete="off"><table id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></form>
+    <div><form autocomplete="off" class="FormDataWrap"><table id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></form></div>
 
 element(FormDataTopTitle)
     <p><b>{{#proper}}{{table.name}}{{/proper}}</b></p>
@@ -121,7 +121,7 @@ element(DTDataTopTitle)
 
 
 element(DTDataWrap)
-    {{name}}<div > <form autocomplete="off"><table class="data-table" 
+    {{name}}<div > <form autocomplete="off" class="DTDataWrap"><table class="data-table" 
 	{{#table.pagination}} data-page-length='{{table.pagination}}' {{/table.pagination}}
 	{{#param.pagination}} data-page-length='{{param.pagination}}' {{/param.pagination}}
 	id="{{tid}}">{{{head_html}}}{{{body_html}}}{{{foot_html}}}</table></form></div>
@@ -212,7 +212,7 @@ element(NontableFormDataFootRecordWrap)
 
 <#
 element(MultiformDataWrap)
-    <form autocomplete="off" style="margin:4px 8px 4px 8px;"> {{{head_html}}} {{{body_html}}} {{{foot_html}}}</form>
+    <form autocomplete="off" class="MultiformDataWrap"> {{{head_html}}} {{{body_html}}} {{{foot_html}}}</form>
 
 element(MultiformDataTopTitle)
     <p><b>{{#proper}}{{table.name}}{{/proper}}</b></p>

@@ -5,12 +5,13 @@
 --:{class:hidden,Type:Hide}  
 
 --:{class:text,Type:Text}  
---:{class:text40,Type:Text}  
+--:{class:text40,Type:Text}
 
 --:{class:textbox,Type:Text,substyle:Box}  
 
 --:{class:integer,Type:Integer}  
 --:{class:float,Type:Float}  
+--:{class:num82,Type:Text,substyle:Num82} 
 
 --:{class:timestamp,Type:Text,substyle:Datetimepicker}  
 --:{class:datestamp,Type:Text,substyle:Datepicker}  
@@ -64,6 +65,7 @@ CREATE TABLE MAIL
   STAMP TIMESTAMP DEFAULT 'now',
   CONTEXT_1 VARCHAR(20),
   CONTEXT_2 VARCHAR(20),
+  SHARD FK,
   DESTINATION TEXT40
 );
 CREATE INDEX IDX_MAIL1 ON MAIL (REF);
